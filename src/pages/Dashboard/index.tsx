@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { FormattedNumber, IntlProvider } from 'react-intl';
 import income from '../../assets/income.svg';
 import outcome from '../../assets/outcome.svg';
 import total from '../../assets/total.svg';
@@ -61,13 +60,7 @@ const Dashboard: React.FC = () => {
               <img src={income} alt="Income" />
             </header>
             <h1 data-testid="balance-income">
-              <IntlProvider locale="pt-BR">
-                <FormattedNumber
-                  value={Number(balance.income)}
-                  style="currency"
-                  currency="BRL"
-                />
-              </IntlProvider>
+              {formatValue(Number(balance.income))}
             </h1>
           </Card>
           <Card>
@@ -76,13 +69,7 @@ const Dashboard: React.FC = () => {
               <img src={outcome} alt="Outcome" />
             </header>
             <h1 data-testid="balance-outcome">
-              <IntlProvider locale="pt-BR">
-                <FormattedNumber
-                  value={Number(balance.outcome)}
-                  style="currency"
-                  currency="BRL"
-                />
-              </IntlProvider>
+              {formatValue(Number(balance.outcome))}
             </h1>
           </Card>
           <Card total>
@@ -91,13 +78,7 @@ const Dashboard: React.FC = () => {
               <img src={total} alt="Total" />
             </header>
             <h1 data-testid="balance-total">
-              <IntlProvider locale="pt-BR">
-                <FormattedNumber
-                  value={Number(balance.total)}
-                  style="currency"
-                  currency="BRL"
-                />
-              </IntlProvider>
+              {formatValue(Number(balance.total))}
             </h1>
           </Card>
         </CardContainer>
@@ -118,15 +99,10 @@ const Dashboard: React.FC = () => {
                 <tr>
                   <td className="title">{transaction.title}</td>
                   <td className="income">
-                    <IntlProvider locale="pt-BR">
-                      <FormattedNumber
-                        value={Number(transaction.value)}
-                        style="currency"
-                        currency="BRL"
-                      />
-                    </IntlProvider>
+                    {transaction.type === 'outcome' && '- '}
+                    {formatValue(Number(transaction.value))}
                   </td>
-                  <td>{transaction.type}</td>
+                  <td>{transaction.category.title}</td>
                   <td>
                     {new Date(transaction.created_at).toLocaleDateString(
                       'pt-br',

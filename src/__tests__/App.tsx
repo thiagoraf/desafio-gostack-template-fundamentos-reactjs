@@ -106,7 +106,7 @@ describe('Dashboard', () => {
 
     expect(getByTestId('balance-total')).toHaveTextContent('R$ 5.950,00');
   });
-  /*
+
   it('should be able to list the transactions', async () => {
     const { getByText } = render(<App />);
 
@@ -191,7 +191,7 @@ describe('Dashboard', () => {
 
     expect(window.location.pathname).toEqual('/import');
   });
-
+  /*
   test('should be able to upload a file', async () => {
     const { getByText, getByTestId } = render(<App />);
 
