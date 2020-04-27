@@ -191,7 +191,7 @@ describe('Dashboard', () => {
 
     expect(window.location.pathname).toEqual('/import');
   });
-  /*
+
   test('should be able to upload a file', async () => {
     const { getByText, getByTestId } = render(<App />);
 
@@ -225,5 +225,5 @@ describe('Dashboard', () => {
     expect(getByText('import.csv')).toBeTruthy();
 
     await actWait();
-  }); */
+  });
 });
